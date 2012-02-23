@@ -1,0 +1,41 @@
+background yes
+use_xft yes
+xftfont 123:size=8
+xftalpha 0.1
+update_interval 1
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type override 
+own_window_hints undercorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes 
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color gray
+default_shade_color red
+default_outline_color green
+default_bar_size 0.5
+alignment bottom_left
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 1
+override_utf8_locale yes
+use_spacer yes
+ 
+gap_x 10
+gap_y 15
+
+color1 DimGray
+color2 White
+color3 97BF60
+color4 333333
+
+TEXT 
+${if_running banshee}${font Ubuntu:size=34}${color1}${exec conkyBanshee --datatype=AR}${font}
+${voffset -10}     ${font Ubuntu:size=14}${color2}${exec conkyBanshee --datatype=TI}${font}
+${voffset -3}${font Ubuntu:size=10}${color3}${exec conkyBanshee --datatype=AL}${font}
+${color4}${font Ubuntu:size=8}${if_match ${exec conkyBanshee --datatype=PP} > 100} $else${execbar conkyBanshee --datatype=PP}$endif
+${exec conkyBanshee --datatype=ST} ${alignr}${color4}${exec conkyBanshee --datatype=PT} of ${exec conkyBanshee --datatype=LE}${endif}
